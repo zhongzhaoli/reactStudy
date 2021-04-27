@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import routerList from '../../router/routerList';
+import CustomHeader from '../../components/customHeader/index';
+import './index.css';
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -70,7 +72,7 @@ class Main extends React.Component {
   // 一级目录
   oneLevelMenu = ({ name, path, icon }) => {
     return (<Menu.Item key={path} icon={icon}>
-      <Link to={path}>{name}</Link>
+      <Link className="menuItem" to={path}>{name}</Link>
     </Menu.Item>);
   }
   // 子目录
@@ -87,7 +89,9 @@ class Main extends React.Component {
   render() {
     return (
       <Layout style={{ minHeight: '100vh' }}>
-        <Header></Header>
+        <Header>
+          <CustomHeader/>
+        </Header>
         <Layout style={{ height: '100%' }}>
           <Sider width={250}>
             <Menu mode="inline" theme="light" selectedKeys={this.state.selectedKeys} openKeys={this.state.openKeys} onOpenChange={this.menuOpen} onClick={this.menuClick} style={{ height: '100%', borderRight: 0 }}>

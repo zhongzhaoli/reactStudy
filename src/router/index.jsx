@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import React, { Suspense } from 'react';
 import routerList from './routerList';
 
@@ -8,6 +8,7 @@ class CustomRoute extends React.Component {
       <BrowserRouter>
         <Suspense fallback={<span>Loading...</span>}>
           <Switch>
+            <Redirect exact from="/" to="/home"></Redirect>
             {
               Object.assign(routerList).map(({ path, exact, routes, component: LazyComponent }, key) => {
                 let newItem = { path, exact, routes };

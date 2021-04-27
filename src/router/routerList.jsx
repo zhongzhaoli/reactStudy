@@ -10,9 +10,14 @@ const routerList = [
   },
   {
     path: "/",
-    name: "首页",
     component: lazy(() => import('../page/main/index')),
     routes: [
+      {
+        path: "/home",
+        name: "控制台",
+        exact: true,
+        component: lazy(() => import('../page/home/index'))
+      },
       {
         path: "/user",
         name: "用户管理",
