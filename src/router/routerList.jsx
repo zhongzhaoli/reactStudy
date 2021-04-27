@@ -2,9 +2,15 @@ import { lazy } from 'react';
 
 const routerList = [
   {
+    path: "/login",
+    name: "登录",
+    exact: true,
+    hideMenu: true,
+    component: lazy(() => import('../page/login/index')),
+  },
+  {
     path: "/",
     name: "首页",
-    exact: false,
     component: lazy(() => import('../page/main/index')),
     routes: [
       {
@@ -23,7 +29,15 @@ const routerList = [
                 path: "/user/userList/userDetail",
                 name: "用户详情",
                 exact: true,
+                hideMenu: true,
                 component: lazy(() => import('../page/user/userList/userDetail/index')),
+              },
+              {
+                path: "/user/userList/userAdd",
+                name: "用户添加",
+                exact: true,
+                hideMenu: true,
+                component: lazy(() => import('../page/user/userList/userAdd/index')),
               }
             ]
           }
@@ -44,12 +58,6 @@ const routerList = [
         ]
       },
     ]
-  },
-  {
-    path: "/login",
-    name: "登录",
-    exact: true,
-    component: lazy(() => import('../page/login/index')),
   }
 ]
 export default routerList;
