@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { HomeOutlined, UserOutlined, FileTextOutlined } from '@ant-design/icons';
 
 const routerList = [
   {
@@ -16,12 +17,14 @@ const routerList = [
         path: "/home",
         name: "控制台",
         exact: true,
+        icon: <HomeOutlined />,
         component: lazy(() => import('../page/home/index'))
       },
       {
         path: "/user",
         name: "用户管理",
         exact: true,
+        icon: <UserOutlined />,
         component: lazy(() => import('../page/user/index')),
         routes: [
           {
@@ -52,6 +55,7 @@ const routerList = [
         path: "/order",
         name: "订单管理",
         exact: true,
+        icon: <FileTextOutlined />,
         component: lazy(() => import('../page/order/index')),
         routes: [
           {

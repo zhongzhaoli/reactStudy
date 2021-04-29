@@ -3,6 +3,7 @@ import { Route, Switch, Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import routerList from '../../router/routerList';
 import CustomHeader from '../../components/customHeader/index';
+import CustomBreadcrumb from '../../components/customBreadcrumb/index';
 import './index.css';
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -44,6 +45,11 @@ class Main extends React.Component {
     }
     this.menuHideLight(pathname, ['/', ...arr]);
   }
+  // 监听路由变化
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+    } 
+ }
   // 目录点击
   menuClick = ({ key, keyPath }) => {
     this.menuHideLight(key, keyPath.slice(1, keyPath.length));
@@ -106,6 +112,9 @@ class Main extends React.Component {
             </Menu>
           </Sider>
           <Content style={{ padding: '16px' }}>
+            <div className="breadcrumbBox">
+              <CustomBreadcrumb pathname={this.props.location.pathname}/>
+            </div>
             {this.routerListRecursion(this.props.routes)}
           </Content>
         </Layout>
